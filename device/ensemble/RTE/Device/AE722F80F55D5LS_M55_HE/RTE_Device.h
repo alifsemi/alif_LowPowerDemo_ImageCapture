@@ -804,6 +804,28 @@
 // <i> Default: 0
 #define RTE_MT9M114_CAMERA_SENSOR_MIPI_IMAGE_CONFIG            2
 
+#if (RTE_MT9M114_CAMERA_SENSOR_MIPI_IMAGE_CONFIG == 0)
+#define RTE_MT9M114_CAMERA_SENSOR_MIPI_FRAME_HEIGHT 728
+#define RTE_MT9M114_CAMERA_SENSOR_MIPI_FRAME_WIDTH  1288
+#elif (RTE_MT9M114_CAMERA_SENSOR_MIPI_IMAGE_CONFIG == 1)
+#define RTE_MT9M114_CAMERA_SENSOR_MIPI_FRAME_HEIGHT 720
+#define RTE_MT9M114_CAMERA_SENSOR_MIPI_FRAME_WIDTH  1280
+#elif (RTE_MT9M114_CAMERA_SENSOR_MIPI_IMAGE_CONFIG == 2)
+#define RTE_MT9M114_CAMERA_SENSOR_MIPI_FRAME_HEIGHT 720
+#define RTE_MT9M114_CAMERA_SENSOR_MIPI_FRAME_WIDTH  1280
+#elif (RTE_MT9M114_CAMERA_SENSOR_MIPI_IMAGE_CONFIG == 3)
+#define RTE_MT9M114_CAMERA_SENSOR_MIPI_FRAME_HEIGHT 480
+#define RTE_MT9M114_CAMERA_SENSOR_MIPI_FRAME_WIDTH  640
+#elif (RTE_MT9M114_CAMERA_SENSOR_MIPI_IMAGE_CONFIG == 4)
+#define RTE_MT9M114_CAMERA_SENSOR_MIPI_FRAME_HEIGHT 240
+#define RTE_MT9M114_CAMERA_SENSOR_MIPI_FRAME_WIDTH  320
+#elif (RTE_MT9M114_CAMERA_SENSOR_MIPI_IMAGE_CONFIG == 5)
+#define RTE_MT9M114_CAMERA_SENSOR_MIPI_FRAME_HEIGHT 320
+#define RTE_MT9M114_CAMERA_SENSOR_MIPI_FRAME_WIDTH  320
+#else
+#error Unsupported resolution
+#endif
+
 // <o> select MT9M114 MIPI number of lanes in DPHY
 // <i> defines select MT9M114 MIPI number of lanes in DPHY.
 // <i> default: 1 one lane
@@ -827,7 +849,7 @@
 // <o> Select camera sensor MT9M114 MIPI CSI clock source division [Divisor] <2-511>
 // <i> Defines camera sensor MT9M114 MIPI CSI clock source division
 // <i> Default: 20
-#define RTE_MT9M114_CAMERA_SENSOR_MIPI_CSI_CLK_SCR_DIV         20
+#define RTE_MT9M114_CAMERA_SENSOR_MIPI_CSI_CLK_SCR_DIV         5//20
 
 // <o> Select camera sensor MT9M114 MIPI reset pin number
 // <i> Defines camera sensor MT9M114 MIPI reset pin number
@@ -3275,7 +3297,7 @@
 //    <1=> ENABLE
 // <i> Defines Blocking mode support for UART2
 // <i> Default: DISABLE
-#define RTE_UART2_BLOCKING_MODE_ENABLE 0
+#define RTE_UART2_BLOCKING_MODE_ENABLE 1
 
 #endif  // UART2
 
@@ -3409,7 +3431,7 @@
 //    <1=> ENABLE
 // <i> Defines Blocking mode support for UART4
 // <i> Default: DISABLE
-#define RTE_UART4_BLOCKING_MODE_ENABLE 0
+#define RTE_UART4_BLOCKING_MODE_ENABLE 1
 
 #endif  // UART4
 
@@ -3683,7 +3705,7 @@
 //    <1=> DMA0
 // <i> Defines Select DMA0 for LPUART. By default DMA0 will be considered
 // <i> Default: DMA0
-#define RTE_LPUART_SELECT_DMA0          1
+#define RTE_LPUART_SELECT_DMA0          0
 
 // <o> LPUART DMA IRQ priority <0-255>
 // <i> Defines LPUART DMA Interrupt priority
@@ -3695,7 +3717,7 @@
 //    <1=> ENABLE
 // <i> Defines Blocking mode support for LPUART
 // <i> Default: DISABLE
-#define RTE_LPUART_BLOCKING_MODE_ENABLE 0
+#define RTE_LPUART_BLOCKING_MODE_ENABLE 1
 
 #endif  // RTE_LPUART
 
@@ -9821,7 +9843,7 @@
 //     <1=> Enable
 // <i> define Handle Spurious Wakeup
 // <i> default: Enable
-#define PM_HANDLE_SPURIOUS_WAKEUP 1
+#define PM_HANDLE_SPURIOUS_WAKEUP 0
 // </h> Power Management (PM)
 
 #endif /* __RTE_DEVICE_H */

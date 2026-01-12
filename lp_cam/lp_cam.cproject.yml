@@ -1,0 +1,30 @@
+project:
+  groups:
+    - group: App
+      files:
+        - file: main.c
+  add-path:
+    - .
+  output:
+    base-name: $Project$
+    type:
+      - elf
+      - bin
+  layers:
+    - layer: ../device/ensemble/alif-ensemble.clayer.yml
+    - layer: ../device/ensemble/alif-stdio.clayer.yml
+    - layer: ../libs/drv/drv.clayer.yaml
+  packs:
+    - pack: AlifSemiconductor::Ensemble@^2.0.2
+    - pack: ARM::CMSIS-Compiler@^2.0.0
+    - pack: ARM::CMSIS
+  components:
+    - component: CMSIS Driver:SAI
+    - component: Device:SOC Peripherals:DMA
+    - component: CMSIS Driver:I2C
+    - component: Device:SOC Peripherals:PDM
+    - component: BSP:External peripherals:CAMERA Sensor MT9M114
+    - component: Device:SOC Peripherals:CPI
+    - component: Device:SOC Peripherals:LPTIMER
+    - component: Device:SOC Peripherals:MIPI CSI2
+    - component: Device:SOC Peripherals:MIPI DSI CSI2 DPHY

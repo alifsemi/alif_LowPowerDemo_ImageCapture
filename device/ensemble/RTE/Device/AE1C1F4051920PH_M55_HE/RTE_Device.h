@@ -1839,7 +1839,7 @@
 //    <1=> ENABLE
 // <i> Defines Blocking mode support for UART2
 // <i> Default: DISABLE
-#define RTE_UART2_BLOCKING_MODE_ENABLE 0
+#define RTE_UART2_BLOCKING_MODE_ENABLE 1
 
 #endif  // UART2
 
@@ -1966,7 +1966,7 @@
 //    <1=> ENABLE
 // <i> Defines Blocking mode support for UART4
 // <i> Default: DISABLE
-#define RTE_UART4_BLOCKING_MODE_ENABLE 0
+#define RTE_UART4_BLOCKING_MODE_ENABLE 1
 
 #endif  // UART4
 
@@ -2086,7 +2086,7 @@
 //    <1=> ENABLE
 // <i> Defines Blocking mode support for LPUART
 // <i> Default: DISABLE
-#define RTE_LPUART_BLOCKING_MODE_ENABLE 0
+#define RTE_LPUART_BLOCKING_MODE_ENABLE 1
 
 #endif  // RTE_LPUART
 
@@ -4812,7 +4812,7 @@
 //     <1=> Enable
 // <i> define Handle Spurious Wakeup
 // <i> default: Enable
-#define PM_HANDLE_SPURIOUS_WAKEUP 1
+#define PM_HANDLE_SPURIOUS_WAKEUP 0
 // </h> Power Management (PM)
 
 #endif /* __RTE_DEVICE_H */
