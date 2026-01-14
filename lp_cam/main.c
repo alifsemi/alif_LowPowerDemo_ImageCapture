@@ -238,24 +238,16 @@ static void transition_up()
 
 static void cpi_cb(uint32_t event)
 {
-    cpi_cb_count++;
-
     if(ARM_CPI_EVENT_CAMERA_CAPTURE_STOPPED & event)
     {
         cpi_done = true;
-    }
-    else {
-        if(ARM_CPI_EVENT_MIPI_CSI2_ERROR & event)
-        {
-            while(1);
-        }
     }
 }
 
 static void cpi_init()
 {
     int err;
-    cpi_cb_count = 0;
+
     err = Driver_CPI.Initialize(cpi_cb);
     assert(ARM_DRIVER_OK == err);
 
@@ -279,13 +271,14 @@ static void cpi_capture()
     err = Driver_CPI.CaptureFrame(buf_cam);
     assert(ARM_DRIVER_OK == err);
 
-    while (cpi_trigger == true)
-    {
+    while (cpi_trigger == true) {
         /* LPGPIO interrupt clear */
         GPIO_Type *gpio = (GPIO_Type *) LPGPIO_BASE;
         gpio_interrupt_eoi(gpio, TRIGGER_PIN);
 
-        while(cpi_done == false) pm_core_enter_normal_sleep();
+        while(cpi_done == false) {
+            pm_core_enter_normal_sleep();
+        }
 
         cpi_done = false;
         cpi_trigger = false;
@@ -344,8 +337,8 @@ static void lptimer_self_test()
     lptimer_disable_counter(lptimer, LPTIMER_CH);
     lptimer_set_mode_userdefined(lptimer, LPTIMER_CH);
     lptimer_load_count(lptimer, LPTIMER_CH, &count);
-    lptimer_clear_interrupt(lptimer, LPTIMER_CH);
-    lptimer_mask_interrupt(lptimer, LPTIMER_CH);
     lptimer_enable_counter(lptimer, LPTIMER_CH);
+
+    /* Disable the LPTIMER channel interrupt, not used */
     NVIC_DisableIRQ(LPTIMER0_IRQ_IRQn + LPTIMER_CH);
 }
