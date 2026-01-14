@@ -37,8 +37,9 @@ The binaries will be located in the out directory, for example:
     └── ...
 
 
-# Debugging the binaries
-
+## Debugging the binaries
+- Switch to the Debug and Run view (CTRL+SHIFT+D) and press F5
+- **TIP:** You may want to use SE tools integration to install the CPU stubs
 
 ## Programming the binaries
 This program runs on only one core at a time. Use the built in tasks to program the binary to the device. This is done by following the "Programming the target with Alif Security Toolkit" step as described in the above "Getting Started Guide".
