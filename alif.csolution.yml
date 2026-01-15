@@ -13,7 +13,7 @@ solution:
   packs:
     - pack: AlifSemiconductor::Ensemble@^2.0.2
     - pack: ARM::CMSIS-Compiler@^2.0.0
-    - pack: ARM::CMSIS
+    - pack: ARM::CMSIS@^6.0.0
 
   target-types:
     - type: E7-HE
